@@ -1,13 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Header from '../components/common/header';
 
-export const AppContainer = ({ children }) => {
+/**
+ * AppContainer the main application layout
+ * @method  AppContainer Stateless Component
+ * @param  {object}
+ * @return {[type]}   [description]
+ */
+export const AppContainer = (props) => {
+  const { children } = props;
 
   return (
     <section className={`app`}>
+      <Header/>
       { children }
     </section>
   );
 
 }
 
-export default AppContainer;
+// Export the default connected component
+export default connect((state) => {
+  return {
+    app: state.app
+  };
+})(AppContainer);

@@ -1,12 +1,16 @@
 import { APP_LOADING, APP_LOADED } from '../actions';
 
+// initial state
 export const initialState = {
-  loading: true,
+  loading: false
 };
 
+// reducer function
 export default function(state = initialState, action) {
-  const { type, data } = action;
+  // destructure action object and extract type
+  const { type } = action;
 
+  // switch based on the action.type
   switch (type) {
     case APP_LOADING:
       return { ...state, loading: true };
@@ -17,4 +21,4 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-};
+}
