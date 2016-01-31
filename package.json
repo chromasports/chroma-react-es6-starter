@@ -6,7 +6,7 @@
     "dev": "node_modules/.bin/jspm-server --open=src",
     "eslint": "node_modules/.bin/eslint ./**/*.js",
     "jspm": "node_modules/.bin/jspm",
-    "test": "node_modules/.bin/babel-node node_modules/.bin/tape src/**/*-spec.js"
+    "test": "node_modules/.bin/babel-cli node_modules/.bin/tape src/**/*-spec.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
       "baseURL": "src"
     },
     "dependencies": {
+      "dexie": "npm:dexie@^1.2.0",
       "react": "npm:react@^0.14.7",
       "react-dom": "npm:react-dom@^0.14.7",
       "react-redux": "npm:react-redux@^4.1.2",

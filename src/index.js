@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import Routes from './Routes';
 import store from './store';
 
+import db from './utils/Database';
+
 import AppContainer from './containers/AppContainer';
 
 render(
