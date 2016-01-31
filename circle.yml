@@ -1,10 +1,7 @@
 machine:
   node:
     version: 5.0.0
-  npm:
-    version: 3.3.6
 dependencies:
-  override:
-    - npm install
-    - npm install -g jspm core-js
+  post:
+    - npm install -g jspm
     - jspm install
