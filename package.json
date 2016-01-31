@@ -1,0 +1,43 @@
+{
+  "name": "chroma-react-es6-starter",
+  "version": "0.0.0",
+  "description": "Chroma React ES6 Starter",
+  "scripts": {
+    "dev": "node_modules/.bin/jspm-server --open=client",
+    "eslint": "node_modules/.bin/eslint ./**/*.js",
+    "jspm": "node_modules/.bin/jspm",
+    "test": "node_modules/.bin/babel-node node_modules/.bin/tape client/**/*-spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:chromasports/chroma-react-es6-starter.git"
+  },
+  "homepage": "https://github.com/chromasports/chroma-react-es6-starter/blob/master/README.md",
+  "private": true,
+  "jspm": {
+    "directories": {
+      "baseURL": "client"
+    },
+    "dependencies": {
+      "react": "npm:react@^0.14.7",
+      "react-dom": "npm:react-dom@^0.14.7",
+      "react-redux": "npm:react-redux@^4.1.2",
+      "react-router": "npm:react-router@^2.0.0-rc5",
+      "redux": "npm:redux@^3.1.6",
+      "redux-thunk": "npm:redux-thunk@^1.0.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.4",
+    "eslint": "^1.9.0",
+    "eslint-plugin-react": "^3.8.0",
+    "jspm": "^0.16.14",
+    "jspm-server": "^1.0.1",
+    "tape": "^4.2.2"
+  }
+}
