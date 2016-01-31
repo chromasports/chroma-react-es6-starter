@@ -1,4 +1,4 @@
 dependencies:
   override:
     - npm install
-    - npm run jspm install
+    - ./node_modules/.bin/jspm install
