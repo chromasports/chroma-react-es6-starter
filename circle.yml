@@ -1,0 +1,4 @@
+dependencies:
+  override:
+    - npm install
+    - npm run jspm install
