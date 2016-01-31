@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "description": "Chroma React ES6 Starter",
   "scripts": {
-    "dev": "node_modules/.bin/jspm-server --open=client",
+    "dev": "node_modules/.bin/jspm-server --open=src",
     "eslint": "node_modules/.bin/eslint ./**/*.js",
     "jspm": "node_modules/.bin/jspm",
-    "test": "node_modules/.bin/babel-node node_modules/.bin/tape client/**/*-spec.js"
+    "test": "node_modules/.bin/babel-node node_modules/.bin/tape src/**/*-spec.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   "private": true,
   "jspm": {
     "directories": {
-      "baseURL": "client"
+      "baseURL": "src"
     },
     "dependencies": {
       "react": "npm:react@^0.14.7",
