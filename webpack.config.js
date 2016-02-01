@@ -21,7 +21,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('bundle.[hash].css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
   ].concat(isDev ? []: [
@@ -42,6 +42,11 @@ module.exports = {
         replaceInFile(path.join(path.join(__dirname, 'dist'), 'index.html'),
             'bundle.js',
             'bundle.' + hash + '.js'
+        );
+
+        replaceInFile(path.join(path.join(__dirname, 'dist'), 'index.html'),
+            'bundle.css',
+            'bundle.' + hash + '.css'
         );
       });
     }
