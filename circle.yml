@@ -3,4 +3,4 @@ machine:
     version: 0.12.0
 dependencies:
   pre:
-    - npm install -g jspm
+    - npm install -g jspm core-js
