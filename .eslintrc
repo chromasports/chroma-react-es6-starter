@@ -10,6 +10,7 @@
   ],
   "rules": {
     "comma-dangle": 0,
-    "no-unused-vars": [2, {"vars": "all", "args": "after-used", "varsIgnorePattern": "React"}]
+    "no-unused-vars": [2, {"vars": "all", "args": "after-used", "varsIgnorePattern": "React"}],
+    "no-console": 1
   }
 }
