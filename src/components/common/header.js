@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import child components
-import Navigation from './navigation/index';
+import Navigation from './navigation';
 
 /**
  * Header Component

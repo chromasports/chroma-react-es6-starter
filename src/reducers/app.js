@@ -1,5 +1,5 @@
 import { APP_LOADING, APP_LOADED } from '../actions';
-import DB from '../utils/Database';
+import DB from '../utils/database';
 
 // initial state
 const getInitialState = () => {

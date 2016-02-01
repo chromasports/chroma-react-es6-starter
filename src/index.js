@@ -12,7 +12,7 @@ import store from './store';
 // import DB from './utils/Database';
 
 // import our app layout container
-import AppContainer from './containers/AppContainer';
+import AppContainer from './containers/app-container';
 
 // setup the db connection
 // DB()

@@ -1,15 +1,17 @@
 # Chroma React ES6 Starter Kit
 
 ## Aim
-The aim of this project is to get developers past the struggle of the development and build setup of React, ESNext, Webpack & Babel.
+
+The aim of this project is to get developers past the initial struggle of the development and build setup of React, ESNext, Webpack & Babel. Also to show the best practices I have found along the way.
 
 ### Technologies Included
-
-* Babel 6 (utilized to allow the use of ESNext)
-* Webpack
-* ReactJS
-* IndexedDB
-* Mocha
+* node
+* npm
+* babel 6 (utilized to allow the use of ESNext)
+* webpack
+* reactJS
+* indexedDB
+* mocha
 
 ## Steup
 
@@ -44,7 +46,10 @@ npm run:test -- --grep app
 npm run build
 ```
 
-### Misc ( linting / coding standards )
+### Misc ( linting / coding standards / documentation )
 ```bash
 npm run eslint
+npm run docs
 ```
+
+For the record, `npm run docs` command is for crude docco documentation. This should be improved
