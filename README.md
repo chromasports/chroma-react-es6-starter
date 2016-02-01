@@ -4,7 +4,6 @@
 
 ```bash
 npm install
-npm run jspm install
 ```
 
 ## Running
