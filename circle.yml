@@ -3,4 +3,4 @@ machine:
     version: 0.12.0
 dependencies:
   post:
-    - jspm install -y
+    - node_modules/.bin/jspm install -y
