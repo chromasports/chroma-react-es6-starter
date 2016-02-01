@@ -13,8 +13,15 @@ db.version(1)
   });
 
 // setup db schemas updates if already exists
-db = Schemas(db);
+Schemas(db);
 
 db.open();
 // export the database for use within the app
 export default db;
+
+
+// export default () => {
+//   return new Promise((resolve, reject) => {
+//
+//   });
+// }

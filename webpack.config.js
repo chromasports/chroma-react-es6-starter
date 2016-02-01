@@ -6,6 +6,32 @@ var hotPort = 8000;
 
 var isDev = process.env.NODE_ENV !== 'production';
 
+function inject () {
+  this.plugin("done", function (stats) {
+    var replaceInFile = function (filePath, toReplace, replacement) {
+      var replacer = function (match) {
+        console.log('Replacing in %s: %s => %s', filePath, match, replacement);
+        return replacement;
+      };
+      var str = fs.readFileSync(filePath, 'utf8');
+      var out = str.replace(new RegExp(toReplace, 'g'), replacer);
+      fs.writeFileSync(filePath, out);
+    };
+
+    var hash = stats.hash; // Build's hash, found in `stats` since build lifecycle is done.
+
+    replaceInFile(path.join(path.join(__dirname, 'dist'), 'index.html'),
+        'bundle.js',
+        'bundle.' + hash + '.js'
+    );
+
+    replaceInFile(path.join(path.join(__dirname, 'dist'), 'index.html'),
+        'bundle.css',
+        'bundle.' + hash + '.css'
+    );
+  });
+}
+
 module.exports = {
   devtool: (isDev) ? 'eval' : 'source-map',
   entry: [
@@ -21,35 +47,11 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('bundle.[hash].css'),
+    new ExtractTextPlugin(isDev ? 'bundle.css' : 'bundle.[hash].css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
   ].concat(isDev ? []: [
-    function () {
-      this.plugin("done", function (stats) {
-        var replaceInFile = function (filePath, toReplace, replacement) {
-          var replacer = function (match) {
-            console.log('Replacing in %s: %s => %s', filePath, match, replacement);
-            return replacement;
-          };
-          var str = fs.readFileSync(filePath, 'utf8');
-          var out = str.replace(new RegExp(toReplace, 'g'), replacer);
-          fs.writeFileSync(filePath, out);
-        };
-
-        var hash = stats.hash; // Build's hash, found in `stats` since build lifecycle is done.
-
-        replaceInFile(path.join(path.join(__dirname, 'dist'), 'index.html'),
-            'bundle.js',
-            'bundle.' + hash + '.js'
-        );
-
-        replaceInFile(path.join(path.join(__dirname, 'dist'), 'index.html'),
-            'bundle.css',
-            'bundle.' + hash + '.css'
-        );
-      });
-    }
+    inject
   ]),
   module: {
     loaders: [

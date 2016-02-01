@@ -1,19 +1,24 @@
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-// import jsdom from 'node-jsdom';
+import jsdom from 'node-jsdom';
 
-// test globals
-global.expect = expect;
-global.sinon = sinon;
 chai.use(sinonChai);
 
-// global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
-// global.window = global.document.defaultView;
+// make available globally so we dont have to explicitly import
+// in each test
+global.expect = expect;
+global.sinon = sinon;
+
+// shim dom and various expected objects and functions
+global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
+global.window = global.document.defaultView;
+global.navigator = {userAgent: 'Chrome'};
 global.console.debug = function() {}
+
+// shim environment variables
 global.__DEV__ = (process.env.NODE_ENV !== "production");
 global.environment = process.env.NODE_ENV;
-global.navigator = {userAgent: 'Chrome'};
 
 // ensure requiring css not to throw
 require.extensions['.css'] = function () {

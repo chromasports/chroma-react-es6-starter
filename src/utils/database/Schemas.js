@@ -13,6 +13,9 @@ export default function(db) {
   });
 
   // example insert/update
+  // in future this should not be done here unless
+  // setting up some app specific stuff which you require
+  // before react is instantiated
   db.app.put({type: 'name', value: 'REACT ES6 STARTER KIT...'});
 
   // return the db
