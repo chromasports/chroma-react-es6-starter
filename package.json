@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Chroma React ES6 Starter",
   "scripts": {
-    "dev": "node index",
+    "dev": "node_modules/.bin/nodemon index",
     "eslint": "node_modules/.bin/eslint ./**/*.js",
     "test": "`NODE_ENV=test npm bin`/mocha --require ./test/test-init --compilers js:babel-core/register --recursive"
   },
@@ -25,6 +25,7 @@
     "eslint-plugin-react": "^3.8.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "mocha": "^2.4.5",
+    "nodemon": "^1.8.1",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.0",
