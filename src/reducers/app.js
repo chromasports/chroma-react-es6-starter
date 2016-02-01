@@ -1,9 +1,21 @@
 import { APP_LOADING, APP_LOADED } from '../actions';
+import DB from '../utils/Database';
 
 // initial state
-export const initialState = {
-  loading: false
-};
+const getInitialState = () => {
+  let state = {};
+
+  DB.app.get('name').then(() => {
+
+  });
+
+  return {
+    ...state,
+    loading: false
+  };
+}
+
+export const initialState = getInitialState();
 
 // reducer function
 export default function(state = initialState, action) {

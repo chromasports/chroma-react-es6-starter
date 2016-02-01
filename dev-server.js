@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import config from './webpack.config.js';
 
+// additional webpack configuration for the dev server
 const serverOptions = {
   publicPath: '/',
   contentBase: 'src',
@@ -17,9 +18,10 @@ const serverOptions = {
   historyApiFallback: true
 };
 
-const compiler = webpack(config);
-const webpackDevServer = new WebpackDevServer(compiler, serverOptions);
+// instantiate the webpack dev server
+const webpackDevServer = new WebpackDevServer(webpack(config), serverOptions);
 
+// ensure the dev server is listening and serving on the port specified
 webpackDevServer.listen(config._hotPort, function (err) {
   if (err) {
     throw err;
