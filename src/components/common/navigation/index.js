@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 // import navigation component style sheet
-import './navigation.css!';
+import './navigation.css';
 
 /**
  * Navigation Stateless Component

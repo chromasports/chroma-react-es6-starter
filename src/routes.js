@@ -5,6 +5,6 @@ import DashboardContainer from './containers/DashboardContainer';
 
 export default () => (
   <Router history={browserHistory}>
-    <Route path="/src/" component={DashboardContainer} />
+    <Route path="/" component={DashboardContainer} />
   </Router>
 );
