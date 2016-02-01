@@ -3,7 +3,7 @@ import WebpackDevServer from 'webpack-dev-server';
 import config from './webpack.config.js';
 
 const serverOptions = {
-  publicPath: '/dist/',
+  publicPath: '/',
   contentBase: 'src',
   hot: true,
   stats: {

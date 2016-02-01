@@ -4,7 +4,7 @@
   "description": "Chroma React ES6 Starter",
   "scripts": {
     "dev": "node_modules/.bin/nodemon index",
-    "build": "rm -rf dist && NODE_ENV=production node_modules/.bin/webpack --config ./webpack.config.js --progress --profile --colors",
+    "build": "rm -rf dist && mkdir dist && cp ./src/index.html ./dist/ && NODE_ENV=production node_modules/.bin/webpack --config ./webpack.config.js --progress --profile --colors",
     "eslint": "node_modules/.bin/eslint ./**/*.js",
     "test": "NODE_ENV=test node_modules/.bin/mocha --require ./test/test-init --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- -w"
@@ -26,6 +26,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.8.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.7.2",
     "mocha": "^2.4.5",
     "nodemon": "^1.8.1",
     "sinon": "^1.17.3",
