@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Chroma React ES6 Starter",
   "scripts": {
+    "postinstall": "jspm install -y",
     "dev": "node_modules/.bin/jspm-server --open=src",
     "eslint": "node_modules/.bin/eslint ./**/*.js",
     "jspm": "node_modules/.bin/jspm",

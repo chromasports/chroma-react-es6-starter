@@ -2,5 +2,6 @@ machine:
   node:
     version: 0.12.0
 dependencies:
-  post:
+  pre:
+    - npm install -g jspm
     - node_modules/.bin/jspm install -y
