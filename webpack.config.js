@@ -59,7 +59,7 @@ module.exports = {
       },
       {
         test: /\.css$/, // Only .css files
-        loader: 'style!css' // Run both loaders
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       }
     ]
   },
