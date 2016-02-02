@@ -2,4 +2,4 @@
 require('babel-core/register');
 
 // require the dev server
-require('./dev-server');
+require('./tasks/dev-server');

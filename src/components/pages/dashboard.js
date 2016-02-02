@@ -5,13 +5,11 @@ import React from 'react';
  * @method DashboardContainer
  * @return {jsx}
  */
-const DashboardContainer = () => {
-  return (
-    <section className={`dashboard`}>
+const Dashboard = () => (
+  <section className={`dashboard`}>
 
-    </section>
-  );
-};
+  </section>
+);
 
 // export default component
-export default DashboardContainer;
+export default Dashboard;

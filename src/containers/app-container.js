@@ -6,7 +6,7 @@ import Header from '../components/common/header';
  * AppContainer the main application layout
  * @method  AppContainer Stateless Component
  * @param  {object}
- * @return {[type]}   [description]
+ * @return {jsx}   [description]
  */
 export const AppContainer = (props) => {
   const { children } = props;

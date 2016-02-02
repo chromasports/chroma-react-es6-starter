@@ -12,5 +12,10 @@
     "comma-dangle": 0,
     "no-unused-vars": [2, {"vars": "all", "args": "after-used", "varsIgnorePattern": "React"}],
     "no-console": 1
+  },
+  "globals": {
+    "describe": true,
+    "expect": true,
+    "it": true
   }
 }
