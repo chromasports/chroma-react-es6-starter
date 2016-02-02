@@ -1,6 +1,6 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import Navigation from '../../../../src/components/common/navigation';
+import Navigation from '../../../../../src/components/common/navigation';
 
 function setup() {
 

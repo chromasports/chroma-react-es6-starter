@@ -4,3 +4,5 @@ jspm_packages
 node_modules
 dist
 docs
+reports
+coverage

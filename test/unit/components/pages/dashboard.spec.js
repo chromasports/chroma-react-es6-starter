@@ -1,11 +1,11 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import { AppContainer } from '../../src/containers/app-container'
+import Dashboard from '../../../../src/components/pages/dashboard'
 
 function setup() {
 
   let renderer = TestUtils.createRenderer()
-  renderer.render(<AppContainer/>)
+  renderer.render(<Dashboard/>)
   const output = renderer.getRenderOutput()
 
   return {
@@ -14,19 +14,15 @@ function setup() {
   }
 }
 
-describe('containers', () => {
+describe('components', () => {
 
-  describe('app-container', () => {
+  describe('dashboard', () => {
 
     it('should render correctly', () => {
       const { output } = setup();
 
       expect(output.type).to.equal('section');
-      expect(output.props.className).to.equal('app');
-
-      let [ Header ] = output.props.children;
-
-      expect(Header.type).to.be.a('function');
+      expect(output.props.className).to.equal('dashboard');
     });
 
   });

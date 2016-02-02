@@ -1,5 +1,5 @@
-import reducer, { initialState } from  '../../src/reducers/app';
-import { APP_LOADING, APP_LOADED } from '../../src/actions';
+import reducer, { initialState } from  '../../../src/reducers/app';
+import { APP_LOADING, APP_LOADED } from '../../../src/actions';
 
 const reducerName = 'app';
 
