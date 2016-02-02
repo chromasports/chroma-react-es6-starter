@@ -40,7 +40,7 @@ npm run test
 ```
 or for watching
 ```bash
-npm test:watch
+npm run test:watch
 ```
 also check out mochas other arguments like --grep
 ```bash
