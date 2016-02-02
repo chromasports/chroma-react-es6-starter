@@ -57,6 +57,12 @@ npm run selenium
 npm run test:e2e
 ```
 
+Code Coverage
+
+```bash
+npm run test:coverage
+```
+
 ### Building
 ```bash
 npm run build
