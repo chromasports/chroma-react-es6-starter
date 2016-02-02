@@ -1,6 +1,6 @@
 # Chroma React ES6 Starter Kit
 [![Circle CI](https://circleci.com/gh/chromasports/chroma-react-es6-starter.svg?style=svg)](https://circleci.com/gh/chromasports/chroma-react-es6-starter)
-
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/250965feb9f74c8e8bd5c7db28f125d8)](https://www.codacy.com)
 ## Aim
 
 The aim of this project is to get developers past the initial struggle of the development and build setup of React, ESNext, Webpack & Babel. Also to show the best practices I have found along the way.
@@ -48,8 +48,12 @@ npm run:test -- --grep app
 ```
 
 End-2-End Testing
+*(testing currently require two terminal windows/tabs)*
+
+The following commands should be run in separate terminal windows/tabs in the order specified
 
 ```bash
+npm run selenium
 npm run test:e2e
 ```
 
