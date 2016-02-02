@@ -1,6 +1,6 @@
 {
   "name": "chroma-react-es6-starter",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Chroma React ES6 Starter",
   "scripts": {
     "postinstall": "./node_modules/.bin/selenium-standalone install",
