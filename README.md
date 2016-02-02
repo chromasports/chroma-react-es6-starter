@@ -38,7 +38,7 @@ or for watching
 ```bash
 npm test:watch
 ```
-also check out mochas over arguments like --grep
+also check out mochas other arguments like --grep
 ```bash
 npm run:test -- --grep app
 ```
