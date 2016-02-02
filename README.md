@@ -1,4 +1,5 @@
 # Chroma React ES6 Starter Kit
+[![Circle CI](https://circleci.com/gh/chromasports/chroma-react-es6-starter.svg?style=svg)](https://circleci.com/gh/chromasports/chroma-react-es6-starter)
 
 ## Aim
 
@@ -12,6 +13,8 @@ The aim of this project is to get developers past the initial struggle of the de
 * reactJS
 * indexedDB
 * mocha
+* nightwatch
+* selenium
 
 ## Steup
 
