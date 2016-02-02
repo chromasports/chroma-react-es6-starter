@@ -1,9 +1,13 @@
 # Chroma React ES6 Starter Kit
+
 [![Circle CI](https://circleci.com/gh/chromasports/chroma-react-es6-starter.svg?style=svg)](https://circleci.com/gh/chromasports/chroma-react-es6-starter)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/250965feb9f74c8e8bd5c7db28f125d8)](https://www.codacy.com)
+
 ## Aim
 
 The aim of this project is to get developers past the initial struggle of the development and build setup of React, ESNext, Webpack & Babel. Also to show the best practices I have found along the way.
+
+Just so you are awaere, all of this is an experiment!
 
 ### Technologies Included
 * node

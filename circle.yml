@@ -2,7 +2,6 @@ machine:
   node:
     version: 0.12.0
   environment:
-    COVERALLS_REPO_TOKEN: "xxx"
     CIRCLE_ARTIFACTS: "~/chromasports-react-es6-starter/coverage"
 general:
   artifacts:
