@@ -1,11 +1,11 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import Dashboard from '../../../src/components/pages/dashboard'
+import Header from '../../../src/components/common/header'
 
 function setup() {
 
   let renderer = TestUtils.createRenderer()
-  renderer.render(<Dashboard/>)
+  renderer.render(<Header/>)
   const output = renderer.getRenderOutput()
 
   return {
@@ -16,13 +16,12 @@ function setup() {
 
 describe('components', () => {
 
-  describe('dashboard', () => {
+  describe('headers', () => {
 
     it('should render correctly', () => {
       const { output } = setup();
 
-      expect(output.type).to.equal('section');
-      expect(output.props.className).to.equal('dashboard');
+      expect(output.type).to.equal('header');
     });
 
   });

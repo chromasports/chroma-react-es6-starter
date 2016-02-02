@@ -2,7 +2,7 @@
 import Dexie from 'dexie';
 
 // import table and index schemas
-import Schemas from './schemas';
+import Schemas from './database/schemas';
 
 // instantiate the new database (creates if doesnt exist)
 let db = new Dexie('chromaReactES6Starter');
