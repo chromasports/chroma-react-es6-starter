@@ -10,7 +10,8 @@ The aim of this project is to get developers past the initial struggle of the de
 * npm
 * babel 6 (utilized to allow the use of ESNext)
 * webpack
-* reactJS
+* react
+* redux
 * indexedDB
 * mocha
 * nightwatch
