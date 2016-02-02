@@ -29,6 +29,8 @@ npm run dev
 
 ### Testing
 
+Unit Testing
+
 ```bash
 npm run test
 ```
@@ -39,6 +41,12 @@ npm test:watch
 also check out mochas over arguments like --grep
 ```bash
 npm run:test -- --grep app
+```
+
+End-2-End Testing
+
+```bash
+npm run test:e2e
 ```
 
 ### Building
