@@ -7,5 +7,8 @@ general:
   artifacts:
     - ./coverage
 test:
+  override:
+    - npm run test
+    - npm run test:e2e -- --env phantomjs
   post:
     - npm run test:coverage
