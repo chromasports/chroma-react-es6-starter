@@ -7,12 +7,11 @@
 
 The aim of this project is to get developers past the initial struggle of the development and build setup of React, ESNext, Webpack & Babel. Also to show the best practices I have found along the way.
 
-Just so you are awaere, all of this is an experiment!
+Just so you are aware, all of this is an experiment!
 
-### Technologies Included
-* node
-* npm
-* babel 6 (utilized to allow the use of ESNext)
+## What you get
+
+* babel 6
 * webpack
 * react
 * redux
@@ -20,8 +19,13 @@ Just so you are awaere, all of this is an experiment!
 * mocha
 * nightwatch
 * selenium
+* isparta (istanbul)
 
-## Steup
+## Setup
+
+### Prerequisites
+* node
+* npm
 
 ### Installing
 
@@ -48,7 +52,7 @@ npm run test:watch
 ```
 also check out mochas other arguments like --grep
 ```bash
-npm run:test -- --grep app
+npm run test -- --grep app
 ```
 
 End-2-End Testing
@@ -77,5 +81,3 @@ npm run build
 npm run eslint
 npm run docs
 ```
-
-For the record, `npm run docs` command is for crude docco documentation. This should be improved
