@@ -1,6 +1,6 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import { AppContainer } from '../../../src/containers/app-container'
+import { AppContainer } from '../../../../src/client/containers/app-container'
 
 function setup() {
 

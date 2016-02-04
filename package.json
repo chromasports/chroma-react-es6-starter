@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "$(npm bin)/selenium-standalone install",
     "dev": "$(npm bin)/nodemon index",
-    "build": "rm -rf dist && mkdir dist && cp ./src/index.html ./dist/ && NODE_ENV=production $(npm bin)/webpack --config ./webpack.config.js --progress --profile --colors",
+    "build": "rm -rf dist && mkdir dist && cp ./src/client/index.html ./dist/ && NODE_ENV=production $(npm bin)/webpack --config ./webpack.config.js --progress --profile --colors",
     "eslint": "$(npm bin)/eslint ./**/*.js",
     "test": "NODE_ENV=test $(npm bin)/mocha ./test/unit --require ./test/test-init --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- -w",
@@ -33,8 +33,8 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.8.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "html-webpack-plugin": "^2.7.2",
     "isparta": "^4.0.0",
+    "json-loader": "^0.5.4",
     "mocha": "^2.4.5",
     "nightwatch": "^0.8.15",
     "node-jsdom": "^3.1.5",
@@ -52,12 +52,13 @@
     "dexie": "^1.2.0",
     "history": "^1.17.0",
     "isomorphic-fetch": "^2.2.1",
+    "npm-check": "^4.1.4",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.1.2",
     "react-router": "^1.0.3",
     "redux": "^3.1.7",
-    "redux-saga": "^0.6.0",
+    "redux-saga": "^0.6.1",
     "redux-thunk": "^1.0.3"
   }
 }

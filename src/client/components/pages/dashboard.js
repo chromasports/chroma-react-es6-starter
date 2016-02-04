@@ -1,5 +1,5 @@
 import React from 'react';
-
+import NpmCheck from '../npm-check';
 /**
  * Dashboard Container
  * @method DashboardContainer
@@ -7,7 +7,7 @@ import React from 'react';
  */
 const Dashboard = () => (
   <section className={`dashboard`}>
-
+    <NpmCheck />
   </section>
 );
 

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './header.css';
 // import child components
 import Navigation from './navigation';
 

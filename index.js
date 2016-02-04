@@ -2,4 +2,4 @@
 require('babel-core/register');
 
 // require the dev server
-require('./tasks/dev-server');
+require('./tasks/webpack/dev-server');
