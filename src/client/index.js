@@ -15,6 +15,8 @@ import store from './store';
 // import our app layout container
 import AppContainer from './containers/app-container';
 
+import './index.css';
+
 // setup the db connection
 // DB()
 //   // if setting up db worked then

@@ -1,0 +1,28 @@
+.npm-check {
+
+}
+
+.npm-check-form input {
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.npm-check-results {
+  padding-top: 5px;
+}
+
+  .npm-check-dependency {
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 10px;
+    background: #9DFF9D;
+  }
+
+  .npm-check-dependency.out-of-date {
+    background: #FF9F9D;
+  }
+
+  .npm-check-dependency.unused {
+    background: #FFF09D;
+  }

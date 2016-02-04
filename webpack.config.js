@@ -9,6 +9,7 @@ var isDev = process.env.NODE_ENV !== 'production';
 module.exports = {
   devtool: (isDev) ? 'eval' : 'source-map',
   entry: [
+    'babel-polyfill',
     path.join(__dirname, 'src/client/index.js'),
   ].concat(isDev ? [
     'webpack-dev-server/client?http://localhost:' + hotPort,
