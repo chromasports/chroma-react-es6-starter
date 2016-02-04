@@ -1,11 +1,11 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import config from '../webpack.config.js';
+import config from '../../webpack.config.js';
 
 // additional webpack configuration for the dev server
 const serverOptions = {
   publicPath: '/',
-  contentBase: 'src',
+  contentBase: 'src/client',
   hot: true,
   stats: {
     colors: true,

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './header.css';
 // import child components
 import Navigation from './navigation';
 
@@ -18,7 +19,8 @@ const Header = () => {
 
   return (
     <header>
-      <Navigation items={items} />
+      <h1 className={`text-center`}>Chroma React ESNext Toolkit</h1>
+      {/*<Navigation items={items} />*/}
     </header>
   );
 };

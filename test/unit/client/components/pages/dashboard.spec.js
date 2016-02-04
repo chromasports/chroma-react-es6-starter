@@ -1,6 +1,6 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import Dashboard from '../../../../src/components/pages/dashboard'
+import Dashboard from '../../../../../src/client/components/pages/dashboard'
 
 function setup() {
 

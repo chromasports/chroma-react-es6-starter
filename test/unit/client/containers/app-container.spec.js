@@ -1,6 +1,6 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import { AppContainer } from '../../../src/containers/app-container'
+import { AppContainer } from '../../../../src/client/containers/app-container'
 
 function setup() {
 
@@ -23,10 +23,6 @@ describe('containers', () => {
 
       expect(output.type).to.equal('section');
       expect(output.props.className).to.equal('app');
-
-      let [ Header ] = output.props.children;
-
-      expect(Header.type).to.be.a('function');
     });
 
   });

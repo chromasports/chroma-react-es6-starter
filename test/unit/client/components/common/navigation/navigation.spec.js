@@ -1,11 +1,11 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import Header from '../../../../src/components/common/header'
+import Navigation from '../../../../../../src/client/components/common/navigation';
 
 function setup() {
 
   let renderer = TestUtils.createRenderer()
-  renderer.render(<Header/>)
+  renderer.render(<Navigation/>)
   const output = renderer.getRenderOutput()
 
   return {
@@ -16,12 +16,12 @@ function setup() {
 
 describe('components', () => {
 
-  describe('headers', () => {
+  describe('navigation', () => {
 
     it('should render correctly', () => {
       const { output } = setup();
 
-      expect(output.type).to.equal('header');
+      expect(output.type).to.equal('nav');
     });
 
   });
