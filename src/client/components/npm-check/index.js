@@ -154,7 +154,10 @@ export const NpmCheck = (props) => {
         <button type={`submit`}
           disabled={isLoading}
           onClick={checkDependencies}>
-          {(isLoading) ? 'Checking Dependencies' : 'Check Dependencies'}
+          {(isLoading) ?
+            'Checking dependencies' :
+            'Click to check dependencies'
+          }
         </button>
       </div>
       {filterMenu}
