@@ -13,6 +13,7 @@ export const AppContainer = (props) => {
 
   return (
     <section className={`app`}>
+      <Header/>
       { children }
     </section>
   );

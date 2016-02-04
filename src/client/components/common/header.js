@@ -19,7 +19,8 @@ const Header = () => {
 
   return (
     <header>
-      <Navigation items={items} />
+      <h1 className={`text-center`}>Chroma React ESNext Toolkit</h1>
+      {/*<Navigation items={items} />*/}
     </header>
   );
 };

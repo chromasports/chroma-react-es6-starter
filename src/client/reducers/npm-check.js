@@ -1,8 +1,18 @@
-import { NPM_CHECK_BEGIN, NPM_CHECK_SUCCESS } from '../actions';
+import {
+  NPM_CHECK_BEGIN,
+  NPM_CHECK_SUCCESS,
+  NPM_CHECK_UPDATE_PATH,
+  NPM_CHECK_FILTER_ALL,
+  NPM_CHECK_FILTER_UNUSED,
+  NPM_CHECK_FILTER_OUTDATED,
+  NPM_CHECK_SET_FILTER
+} from '../actions';
 
 export const initialState = {
   isLoading: false,
-  dependencies: []
+  dependencies: [],
+  filter: 'SHOW_ALL',
+  path: ''
 };
 
 export default function(state = initialState, {type, value}) {
@@ -26,6 +36,36 @@ export default function(state = initialState, {type, value}) {
         ...state,
         isLoading: false,
         dependencies: dependencies
+      };
+
+    case NPM_CHECK_UPDATE_PATH:
+      return {
+        ...state,
+        path: value
+      }
+
+    case NPM_CHECK_FILTER_ALL:
+      return {
+        ...state,
+        filter: 'SHOW_ALL'
+      };
+
+    case NPM_CHECK_FILTER_UNUSED:
+      return {
+        ...state,
+        filter: 'SHOW_UNUSED'
+      };
+
+    case NPM_CHECK_FILTER_OUTDATED:
+      return {
+        ...state,
+        filter: 'SHOW_OUTDATED'
+      };
+
+    case NPM_CHECK_SET_FILTER:
+      return {
+        ...state,
+        filter: value
       };
 
     default:

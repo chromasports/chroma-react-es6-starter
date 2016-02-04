@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { npmCheckBegin } from '../../actions';
+import { npmCheckBegin, npmCheckSetFilter } from '../../actions';
 import classNames from 'classnames';
+import Spinner from 'react-spinkit';
 
 import './npm-check.css';
 
@@ -23,7 +25,8 @@ const renderDependency = (dependency) => {
         <p>{`npm uninstall ${dependency.moduleName} ${(dependency.devDependency) ? '--save-dev' : `--save`} to remove dependency`}</p>
       </div>
     ) :
-    null
+    null;
+
   const depClass = classNames({
     'npm-check-dependency': true,
     'out-of-date': (dependency.installed !== dependency.latest),
@@ -41,6 +44,7 @@ const renderDependency = (dependency) => {
         <span className={`version text-right`}>{dependency.installed}</span>
       </h1>
       {outOfDate}
+      {unused}
     </div>
   )
 };
@@ -55,38 +59,108 @@ const renderLoading = (isLoading) => {
   return (isLoading) ?
     (
       <div className={`npm-check-loading`}>
-          <h1 className={`text-center`}>
-            Checking Dependencies
-          </h1>
+        <Spinner spinnerName={`double-bounce`}
+          style={{
+            width: '300px',
+            height: '300px',
+            margin: '0 auto'
+          }}/>
       </div>
     ) :
     null;
 };
 
-export const NpmCheck = (props) => {
-  const { dispatch } = props;
+const renderFilter = (setFilter, active) => {
 
-  const dependencies = renderDependencies(props.npmCheck.dependencies);
-  const loading = renderLoading(props.npmCheck.isLoading);
-
-  const submitForm = (event) => {
-    event.preventDefault();
-
-    dispatch(npmCheckBegin());
-  }
-
+  const filters = [
+    { name: 'SHOW_ALL', label: 'ALL' },
+    { name: 'SHOW_UNUSED', label: 'UNUSED' },
+    { name: 'SHOW_OUTDATED', label: 'OUTDATED' }
+  ];
 
   return (
-    <section className={`npm-check`}>
+    <div className={`npm-check-filter`}>
+      <ul>
+        {filters.map((filter) => {
+          const activeClass = classNames({
+            'active': (filter.name === active)
+          });
+
+          return (
+            <li key={filter.name}
+              className={activeClass}
+              onClick={() => { setFilter(filter.name); }}>
+              <a>
+                {filter.label}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  );
+}
+
+export const NpmCheck = (props) => {
+
+  console.log(props);
+
+  const { dispatch } = props;
+  const { isLoading, dependencies, filter } = props.npmCheck;
+
+  const visibleDependencies = (dependencies, filter) => {
+    switch (filter) {
+      case 'SHOW_ALL':
+        return dependencies;
+
+      case 'SHOW_UNUSED':
+        return dependencies.filter((d) => {
+          return d.unused;
+        });
+
+      case 'SHOW_OUTDATED':
+        return dependencies.filter((d) => {
+          return (d.installed !== d.latest);
+        });
+
+      default:
+        return dependencies;
+    }
+  }
+
+  const renderDeps = (isLoading) ?
+    null :
+    renderDependencies(visibleDependencies(dependencies, filter));
+
+  const loading = renderLoading(isLoading);
+
+  const checkDependencies = (event) => {
+    event.preventDefault();
+
+    if (!isLoading) {
+      dispatch(npmCheckBegin());
+    }
+  }
+
+  const setFilter = (type) => {
+    dispatch(npmCheckSetFilter(type));
+  }
+
+  const filterMenu = renderFilter(setFilter, filter);
+
+  return (
+    <section className={`npm-check`} style={props.style}>
       <div className={`npm-check-form`}>
-        <form onSubmit={submitForm}>
-          <input type={`text`} placeholder={`package.json`} />
-          <button type={`submit`}>Check Dependencies</button>
-        </form>
+        <button type={`submit`}
+          disabled={isLoading}
+          onClick={checkDependencies}>
+          {(isLoading) ? 'Checking Dependencies' : 'Check Dependencies'}
+        </button>
       </div>
+      {filterMenu}
       <div className={`npm-check-results`}>
         {loading}
-        {dependencies}
+        {renderDeps}
       </div>
     </section>
   )

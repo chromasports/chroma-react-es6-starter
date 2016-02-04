@@ -23,10 +23,6 @@ describe('containers', () => {
 
       expect(output.type).to.equal('section');
       expect(output.props.className).to.equal('app');
-
-      let [ Header ] = output.props.children;
-
-      expect(Header.type).to.be.a('function');
     });
 
   });

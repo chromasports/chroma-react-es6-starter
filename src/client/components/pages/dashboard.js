@@ -7,7 +7,8 @@ import NpmCheck from '../npm-check';
  */
 const Dashboard = () => (
   <section className={`dashboard`}>
-    <NpmCheck />
+    <h1 className={`text-center`}>NPM Dependency Checker</h1>
+    <NpmCheck style={{width: '80%', margin: '0 auto'}}/>
   </section>
 );
 
