@@ -5,7 +5,7 @@
 
 ## About
 
-The aim of this project is to get developers past the initial struggle of the development and build setup of React, ESNext, Webpack & Babel. Also to show the best practices I have found along the way.
+The aim of this project is to showcase the use of react, webpack, babel and esnext.
 
 Just so you are aware, all of this is an experiment!
 
