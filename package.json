@@ -64,6 +64,9 @@
     "react-router": "^1.0.3",
     "react-spinkit": "^1.1.4",
     "redux": "^3.1.7",
+    "redux-devtools": "^3.1.0",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.4",
     "redux-saga": "^0.6.1",
     "redux-thunk": "^1.0.3"
   }

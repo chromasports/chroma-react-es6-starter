@@ -1,20 +1,33 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 import sagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+import DevTools from './containers/dev-tools';
 
 // import all reducers here.
 import sagas from './sagas';
-import app from './reducers/app';
-import npmCheck from './reducers/npm-check';
 
-// setup and export redux store with middleware
-const createStoreWithMiddleware = applyMiddleware(
-  sagaMiddleware(...sagas),
-  thunk
-)(createStore);
+const enhancer = compose(
+  // Middleware you want to use in development:
+  applyMiddleware(
+    sagaMiddleware(...sagas),
+    thunk
+  ),
+  // Required! Enable Redux DevTools with the monitors you chose
+  DevTools.instrument()
+);
 
-// combine our reducers and add to our store
-export default createStoreWithMiddleware(combineReducers({
-  app,
-  npmCheck
-}));
+export default function configureStore(initialState) {
+  // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.
+  // See https://github.com/rackt/redux/releases/tag/v3.1.0
+  const store = createStore(rootReducer, initialState, enhancer);
+
+  // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
+  if (module.hot) {
+    module.hot.accept('./reducers', () =>
+      store.replaceReducer(require('./reducers')/*.default if you use Babel 6+ */)
+    );
+  }
+
+  return store;
+}
