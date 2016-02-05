@@ -25,6 +25,11 @@ module.exports = {
     new ExtractTextPlugin(isDev ? 'bundle.css' : 'bundle.[hash].css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      '__DEV__': JSON.stringify(isDev),
+      'environment': JSON.stringify(process.env.NODE_ENV),
+    }),
   ].concat(isDev ? []: [
     inject
   ]),

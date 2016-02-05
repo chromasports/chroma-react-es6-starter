@@ -1,10 +1,7 @@
 var express = require('express');
-var path = require('path');
 var npmCheck = require('npm-check');
 var cors = require('cors');
 var bodyparser = require('body-parser');
-
-var exec = require('child_process').exec;
 
 var app = express();
 
@@ -19,7 +16,9 @@ app.get('/', function(req, res) {
   res.json({ status: 200, message: 'api online' });
 });
 
-app.get('/:name/:repo', function(req, res) {});
+app.get('/:name/:repo', function(req, res) {
+  // github style url shortcut for the below proposed functionality.
+});
 
 app.post('/npm-check/', function(req, res) {
 
@@ -59,9 +58,22 @@ app.post('/npm-check/', function(req, res) {
 });
 
 // update the dependency
-app.put('/dependecy/:id', function(req, res) {});
+app.put('/dependency/:id', function(req, res) {
+  // try to install the latest version of the sepcified dependency
+  // run the npm test command to ensure everything still works (assuming there is a test command)
+  // submit a pullr equest for the user to approve if all is working.
+  // if we dont have access to repo this endpoint is essentialy redundant
+});
 // uninstall the dependency
-app.delete('/dependecy/:id', function(req, res) {});
+app.delete('/dependency/:id', function(req, res) {
+  // try to uninstall a dependency
+  // run the npm test command
+  // if test passes
+  // branch, commit, push and submit pull request
+  // if test fails
+  // revert the change
+  // respond with error
+});
 
 app.listen(8081, function() {
   console.log('server listening on port: 8081');

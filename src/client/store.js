@@ -1,20 +1,43 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
+import { persistState } from 'redux-devtools';
 import sagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+import DevTools from './containers/dev-tools';
 
-// import all reducers here.
 import sagas from './sagas';
-import app from './reducers/app';
-import npmCheck from './reducers/npm-check';
 
-// setup and export redux store with middleware
-const createStoreWithMiddleware = applyMiddleware(
-  sagaMiddleware(...sagas),
-  thunk
-)(createStore);
+const getDebugSessionKey = () => {
+  const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
+  return (matches && matches.length > 0)? matches[1] : null;
+}
 
-// combine our reducers and add to our store
-export default createStoreWithMiddleware(combineReducers({
-  app,
-  npmCheck
-}));
+const enhancer = (!__DEV__) ?
+  compose(
+    applyMiddleware(
+      sagaMiddleware(...sagas),
+      thunk
+    ),
+  ) :
+  compose(
+    applyMiddleware(
+      sagaMiddleware(...sagas),
+      thunk
+    ),
+    // Required! Enable Redux DevTools with the monitors you chose
+    DevTools.instrument(),
+    persistState(getDebugSessionKey())
+  );
+
+export default function configureStore(initialState) {
+  const store = createStore(rootReducer, initialState, enhancer);
+
+  // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
+  if (module.hot) {
+    module.hot.accept('./reducers', () =>
+      store.replaceReducer(require('./reducers')/*.default if you use Babel 6+ */)
+    );
+  }
+
+  return store;
+}

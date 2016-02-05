@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 
 // import routes and store for use in render
 import Routes from './routes';
-import store from './store';
+import configureStore from './store';
+import showDevTools from './utils/dev-tools-window';
 // import NpmCheck from './components/npm-check';
 
 // this line throws an eslint error as unused var but we need to import otherwise
@@ -17,6 +18,7 @@ import AppContainer from './containers/app-container';
 
 import './index.css';
 
+const store = configureStore();
 // setup the db connection
 // DB()
 //   // if setting up db worked then
@@ -35,3 +37,7 @@ import './index.css';
   // .catch(() => {
   //   throw new Error('Failed to setup indexeddb, is your browser compatible?');
   // });
+
+  if (__DEV__) {
+    showDevTools(store);
+  }
