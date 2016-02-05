@@ -12,7 +12,7 @@ const getDebugSessionKey = () => {
   return (matches && matches.length > 0)? matches[1] : null;
 }
 
-const enhancer = (process.env.NODE_ENV === 'production') ?
+const enhancer = (!__DEV__) ?
   compose(
     applyMiddleware(
       sagaMiddleware(...sagas),

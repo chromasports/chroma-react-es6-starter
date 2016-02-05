@@ -38,6 +38,6 @@ const store = configureStore();
   //   throw new Error('Failed to setup indexeddb, is your browser compatible?');
   // });
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (__DEV__) {
     showDevTools(store);
   }
