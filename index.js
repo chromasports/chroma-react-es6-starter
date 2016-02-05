@@ -2,4 +2,5 @@
 require('babel-core/register');
 require("babel-polyfill");
 // require the dev server
+require('./src/server');
 require('./tasks/webpack/dev-server');

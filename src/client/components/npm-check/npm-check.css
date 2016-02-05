@@ -6,6 +6,16 @@
   width: 100%;
   height: 60px;
   box-sizing: border-box;
+  outline:none;
+  border-radius: 3px 3px 0 0;
+  box-shadow: none;
+  border: 1px solid #186BBB;
+  border-bottom: none;
+  padding: 10px;
+}
+
+.npm-check-form input:disabled {
+  background: rgba(187, 183, 183, 0.22);
 }
 
 .npm-check-form button {
@@ -16,6 +26,7 @@
   font-size: 1em;
   border: 1px solid #186BBB;
   outline: none;
+  text-align: left;
 }
 
 .npm-check-results {
@@ -48,7 +59,7 @@
   .npm-check-filter ul li {
     height: 20px;
     padding: 10px;
-    border: 1px solid grey;
+    border: 1px solid #186BBB;
     border-radius: 0 0 3px 3px;
     float: left;
     text-align: center;
@@ -57,5 +68,19 @@
   }
 
   .npm-check-filter ul li.active {
-    background: #D6D6D6;
+    background: rgba(216, 236, 255, 0.65);
+  }
+
+  .npm-check-report {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+  }
+
+  .npm-check-loading .pulse {
+    width:300px;
+    height: 300px;
   }

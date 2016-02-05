@@ -5,7 +5,9 @@ import {
   NPM_CHECK_FILTER_ALL,
   NPM_CHECK_FILTER_UNUSED,
   NPM_CHECK_FILTER_OUTDATED,
-  NPM_CHECK_SET_FILTER
+  NPM_CHECK_SET_FILTER,
+  NPM_CHECK_SHOW_REPORT,
+  NPM_CHECK_HIDE_REPORT
 } from '../actions';
 
 export const initialState = {
@@ -67,6 +69,18 @@ export default function(state = initialState, {type, value}) {
         ...state,
         filter: value
       };
+
+    case NPM_CHECK_HIDE_REPORT:
+      return {
+        ...state,
+        report: false
+      };
+
+    case NPM_CHECK_SHOW_REPORT:
+      return {
+        ...state,
+        report: true
+      }
 
     default:
       return state;
