@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { npmCheckBegin, npmCheckSetFilter } from '../../actions';
+import { npmCheckBegin, npmCheckSetFilter, npmCheckShowReport, npmCheckHideReport, npmCheckUpdatePath } from '../../actions';
 import classNames from 'classnames';
 import Spinner from 'react-spinkit';
 
@@ -50,16 +50,18 @@ const renderDependency = (dependency) => {
 };
 
 const renderDependencies = (dependencies) => {
-  return dependencies.map((dependency) => {
-    return renderDependency(dependency);
-  });
+  return (dependencies.length === 0) ?
+    (<p>No dependencies to show!</p>) :
+    dependencies.map((dependency) => {
+      return renderDependency(dependency);
+    });
 };
 
 const renderLoading = (isLoading) => {
   return (isLoading) ?
     (
       <div className={`npm-check-loading`}>
-        <Spinner spinnerName={`double-bounce`}
+        <Spinner spinnerName={`pulse`}
           style={{
             width: '300px',
             height: '300px',
@@ -101,12 +103,61 @@ const renderFilter = (setFilter, active) => {
   );
 }
 
+const renderReport = (dependencies) => {
+
+  const outdated = dependencies.filter((d) => {
+    return d.installed !== d.latest;
+  }).length;
+
+  const unused = dependencies.filter((d) => {
+    return d.unused;
+  }).length;
+
+  const withoutError = dependencies.length - unused - outdated;
+
+  return (
+    <div className={`npm-check-report`}>
+      <div className={`npm-check-report-item`}>
+        <p>
+          <b>
+            {`No. of dependencies: `}
+          </b>
+          {dependencies.length}
+        </p>
+      </div>
+      <div className={`npm-check-report-item`}>
+        <p>
+          <b>
+            {`No. of dependencies without issue: `}
+          </b>
+          {withoutError}
+          {`(${((withoutError/dependencies.length) * 100).toFixed(2)}%)`}
+        </p>
+      </div>
+      <div className={`npm-check-report-item`}>
+        <p>
+          <b>
+            {`No. of unused dependencies: `}
+          </b>
+          {unused}
+        </p>
+      </div>
+      <div className={`npm-check-report-item`}>
+        <p>
+          <b>
+            {`No. of outdated dependencies: `}
+          </b>
+          {outdated}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 export const NpmCheck = (props) => {
 
-  console.log(props);
-
   const { dispatch } = props;
-  const { isLoading, dependencies, filter } = props.npmCheck;
+  const { isLoading, dependencies, filter, report } = props.npmCheck;
 
   const visibleDependencies = (dependencies, filter) => {
     switch (filter) {
@@ -148,18 +199,55 @@ export const NpmCheck = (props) => {
 
   const filterMenu = renderFilter(setFilter, filter);
 
+  const reportRender = (report) ?
+    renderReport(dependencies) :
+    null;
+
+  const toggleReport = (event) => {
+    event.stopPropagation();
+
+    if (report) {
+      dispatch(npmCheckHideReport());
+    } else {
+      dispatch(npmCheckShowReport());
+    }
+  }
+
+  const handleChangePath = (event) => {
+    dispatch(npmCheckUpdatePath(event.target.value));
+  }
+
   return (
     <section className={`npm-check`} style={props.style}>
       <div className={`npm-check-form`}>
-        <button type={`submit`}
-          disabled={isLoading}
-          onClick={checkDependencies}>
-          {(isLoading) ?
-            'Checking dependencies' :
-            'Click to check dependencies'
-          }
-        </button>
+        <form>
+          <input type={`text`}
+            disabled={true}
+            onChange={handleChangePath}
+            placeholder={`public github repo - leave blank to check this app :)`} />
+          <button type={`submit`}
+            disabled={isLoading}
+            onClick={checkDependencies}>
+            {(isLoading) ?
+              'Checking dependencies' :
+              'Click to check dependencies'
+            }
+            {(dependencies.length > 0) ?
+              (
+                <span className={`text-right`}
+                  onClick={toggleReport}
+                  style={{textDecoration: 'underline'}}>
+                  {(report) ?
+                    'Hide report' :
+                    'Show report'
+                  }
+                </span>
+              ): null
+            }
+          </button>
+        </form>
       </div>
+      {reportRender}
       {filterMenu}
       <div className={`npm-check-results`}>
         {loading}

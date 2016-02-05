@@ -25,3 +25,9 @@ export const npmCheckFilterOutdated = typeValueAction(NPM_CHECK_FILTER_OUTDATED)
 
 export const NPM_CHECK_SET_FILTER = 'NPM_CHECK_SET_FILTER';
 export const npmCheckSetFilter = typeValueAction(NPM_CHECK_SET_FILTER);
+
+export const NPM_CHECK_SHOW_REPORT = 'NPM_CHECK_SHOW_REPORT';
+export const npmCheckShowReport = typeValueAction(NPM_CHECK_SHOW_REPORT);
+
+export const NPM_CHECK_HIDE_REPORT = 'NPM_CHECK_HIDE_REPORT';
+export const npmCheckHideReport = typeValueAction(NPM_CHECK_HIDE_REPORT);

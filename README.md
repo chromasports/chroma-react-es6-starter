@@ -3,9 +3,9 @@
 [![Circle CI](https://circleci.com/gh/chromasports/chroma-react-es6-starter.svg?style=svg)](https://circleci.com/gh/chromasports/chroma-react-es6-starter)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/250965feb9f74c8e8bd5c7db28f125d8)](https://www.codacy.com)
 
-## Aim
+## About
 
-The aim of this project is to get developers past the initial struggle of the development and build setup of React, ESNext, Webpack & Babel. Also to show the best practices I have found along the way.
+The aim of this project is to showcase the use of react, webpack, babel and esnext.
 
 Just so you are aware, all of this is an experiment!
 
@@ -41,7 +41,7 @@ npm run dev
 
 ### Testing
 
-Unit Testing
+#### Unit Testing
 
 ```bash
 npm run test
@@ -55,28 +55,26 @@ also check out mochas other arguments like --grep
 npm run test -- --grep app
 ```
 
-End-2-End Testing
-*(testing currently require two terminal windows/tabs)*
-
-The following commands should be run in separate terminal windows/tabs in the order specified
+#### End-2-End Testing
 
 ```bash
-npm run selenium
 npm run test:e2e
 ```
 
-Code Coverage
+#### Code Coverage
 
 ```bash
 npm run test:coverage
 ```
 
 ### Building
+
 ```bash
 npm run build
 ```
 
 ### Misc ( linting / coding standards / documentation )
+
 ```bash
 npm run eslint
 npm run docs
