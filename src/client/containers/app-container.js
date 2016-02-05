@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/common/header';
-import DevTools from './dev-tools';
 
 /**
  * AppContainer the main application layout
@@ -16,7 +15,6 @@ export const AppContainer = (props) => {
     <section className={`app`}>
       <Header/>
       { children }
-      <DevTools />
     </section>
   );
 

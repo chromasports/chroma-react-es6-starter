@@ -1,25 +1,35 @@
 import { applyMiddleware, createStore, compose } from 'redux';
+import { persistState } from 'redux-devtools';
 import sagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import DevTools from './containers/dev-tools';
 
-// import all reducers here.
 import sagas from './sagas';
 
-const enhancer = compose(
-  // Middleware you want to use in development:
-  applyMiddleware(
-    sagaMiddleware(...sagas),
-    thunk
-  ),
-  // Required! Enable Redux DevTools with the monitors you chose
-  DevTools.instrument()
-);
+const getDebugSessionKey = () => {
+  const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
+  return (matches && matches.length > 0)? matches[1] : null;
+}
+
+const enhancer = (process.env.NODE_ENV === 'production') ?
+  compose(
+    applyMiddleware(
+      sagaMiddleware(...sagas),
+      thunk
+    ),
+  ) :
+  compose(
+    applyMiddleware(
+      sagaMiddleware(...sagas),
+      thunk
+    ),
+    // Required! Enable Redux DevTools with the monitors you chose
+    DevTools.instrument(),
+    persistState(getDebugSessionKey())
+  );
 
 export default function configureStore(initialState) {
-  // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.
-  // See https://github.com/rackt/redux/releases/tag/v3.1.0
   const store = createStore(rootReducer, initialState, enhancer);
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
