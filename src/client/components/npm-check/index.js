@@ -205,7 +205,8 @@ export const NpmCheck = (props) => {
 
   const toggleReport = (event) => {
     event.stopPropagation();
-
+    event.preventDefault();
+    
     if (report) {
       dispatch(npmCheckHideReport());
     } else {
@@ -220,14 +221,13 @@ export const NpmCheck = (props) => {
   return (
     <section className={`npm-check`} style={props.style}>
       <div className={`npm-check-form`}>
-        <form>
+        <form onSubmit={checkDependencies}>
           <input type={`text`}
             disabled={true}
             onChange={handleChangePath}
             placeholder={`public github repo - leave blank to check this app :)`} />
           <button type={`submit`}
-            disabled={isLoading}
-            onClick={checkDependencies}>
+            disabled={isLoading}>
             {(isLoading) ?
               'Checking dependencies' :
               'Click to check dependencies'
