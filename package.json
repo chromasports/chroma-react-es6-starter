@@ -52,7 +52,7 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "classnames": "^2.2.3",
-    "compress": "^0.99.0",
+    "compression": "^1.6.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.1",
     "cors": "^2.7.1",

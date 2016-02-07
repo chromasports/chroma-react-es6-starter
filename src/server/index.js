@@ -6,7 +6,9 @@ import routes from './routes';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import flash from 'connect-flash';
+import compression from 'compression';
 import bootstrap from './bootstrap/bootstrap';
+
 const app = express();
 
 bootstrap(app);
@@ -14,6 +16,7 @@ bootstrap(app);
 app.set('showStackError', true);
 app.set('port', process.env.port || 8081)
 
+app.use(compression());
 app.use(cors({ exposeHeaders: ['Link'] }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
