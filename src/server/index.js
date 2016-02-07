@@ -14,7 +14,7 @@ const app = express();
 bootstrap(app);
 
 app.set('showStackError', true);
-app.set('port', process.env.port || 8081)
+app.set('port', process.env.SERVER_PORT || 8081)
 
 app.use(compression());
 app.use(cors({ exposeHeaders: ['Link'] }));

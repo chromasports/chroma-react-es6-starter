@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var inject = require('./tasks/webpack/inject');
-var hotPort = 8000;
+var hotPort = process.env.CLIENT_PORT || 8000;
 
 var isDev = process.env.NODE_ENV !== 'production';
 
