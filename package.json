@@ -74,5 +74,9 @@
     "redux-saga": "^0.6.1",
     "redux-thunk": "^1.0.3",
     "socket.io": "^1.4.5"
+  },
+  "engines": {
+    "node": "5.0.0",
+    "npm": "3.3.6"
   }
 }
