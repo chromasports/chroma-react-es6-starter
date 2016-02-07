@@ -16,5 +16,5 @@ test:
     - npm run test
     - npm run test:e2e -- --env phantomjs
   post:
-    - npm run test:coverage
     - forever stop 0
+    - npm run test:coverage
