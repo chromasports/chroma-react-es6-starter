@@ -8,7 +8,7 @@ general:
     - ./coverage
 dependencies:
   pre:
-    - npm install -g forver
+    - npm install -g forever
 test:
   pre:
     - forever start index.js
