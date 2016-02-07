@@ -1,80 +1,31 @@
-var express = require('express');
-var npmCheck = require('npm-check');
-var cors = require('cors');
-var bodyparser = require('body-parser');
+import http from 'http';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import routes from './routes';
+import methodOverride from 'method-override';
+import cookieParser from 'cookie-parser';
+import flash from 'connect-flash';
+import compression from 'compression';
+import bootstrap from './bootstrap/bootstrap';
 
-var app = express();
+const app = express();
 
-app.use(cors());
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }));
+bootstrap(app);
 
-app.set('port', (process.env.PORT || 3000));
-app.disable('x-powered-by');
+app.set('showStackError', true);
+app.set('port', process.env.port || 8081)
 
-app.get('/', function(req, res) {
-  res.json({ status: 200, message: 'api online' });
-});
+app.use(compression());
+app.use(cors({ exposeHeaders: ['Link'] }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(methodOverride('_method'));
+app.use(cookieParser());
+app.use(flash());
 
-app.get('/:name/:repo', function(req, res) {
-  // github style url shortcut for the below proposed functionality.
-});
+routes(app);
 
-app.post('/npm-check/', function(req, res) {
-
-  // FIRST AND FOREMOST WE SHOULD VALIDATE THE PACKAGEDOTJSON AND POTENTIALLY
-  // REMOVE POSTINSTALLS AS THESE COULD BE MALICIOUS - THAT BEING SAID NPM 3 WILL HELP
-  // EXPLICITLY DEFINING ALL CHILD DEPENDENCIES WILL BECOME A MUST
-
-  // TODO: Make the path dynamic... maybe we will need to allow the user to
-  // upload their package.json?
-  // in the case a user uplodads a packagedotjson then we should
-  // create a temp directory move the upload file into this directory.
-  // cd into the directory and run an npm install.
-  // run npm-check on the directory and return success
-  var path = undefined;
-
-  // at this point we should do something like check if its a github repo
-  // if its a github repo then setup a temp directory and try to clone the repo
-  // cd into the repo and try to run an npm install
-  // if this fails then delete the temp directory and send a failure message
-  // else we should run npm check against the newly installed directory
-  // and return a success response with the data returned from npm-check
-  // if your up for it and would like to implement, please feel free!
-  // maybe we should create adapters for different source control? LOL ANYWAYYYYYY....
-
-  var options = {
-    path: (path) ? path : req.body.path
-  };
-
-  npmCheck(options)
-    .then(function(result) {
-      res.json({
-        status: 200,
-        data: result
-      });
-    });
-
-});
-
-// update the dependency
-app.put('/dependency/:id', function(req, res) {
-  // try to install the latest version of the sepcified dependency
-  // run the npm test command to ensure everything still works (assuming there is a test command)
-  // submit a pullr equest for the user to approve if all is working.
-  // if we dont have access to repo this endpoint is essentialy redundant
-});
-// uninstall the dependency
-app.delete('/dependency/:id', function(req, res) {
-  // try to uninstall a dependency
-  // run the npm test command
-  // if test passes
-  // branch, commit, push and submit pull request
-  // if test fails
-  // revert the change
-  // respond with error
-});
-
-app.listen(8081, function() {
-  console.log('server listening on port: 8081');
-});
+http.createServer(app).listen(app.get('port'), () => {
+  console.log(`Express server is listening on port ${app.get('port')} in ${app.settings.env} mode`)
+})

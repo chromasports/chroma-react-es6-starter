@@ -52,22 +52,27 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "classnames": "^2.2.3",
+    "compression": "^1.6.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.1",
     "cors": "^2.7.1",
     "dexie": "^1.2.0",
     "express": "^4.13.4",
     "history": "^1.17.0",
     "isomorphic-fetch": "^2.2.1",
+    "method-override": "^2.3.5",
     "npm-check": "^4.1.4",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-redux": "^4.1.2",
+    "react-redux": "^4.4.0",
     "react-router": "^1.0.3",
     "react-spinkit": "^1.1.4",
-    "redux": "^3.1.7",
+    "redux": "^3.3.0",
     "redux-devtools": "^3.1.0",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.4",
     "redux-saga": "^0.6.1",
-    "redux-thunk": "^1.0.3"
+    "redux-thunk": "^1.0.3",
+    "socket.io": "^1.4.5"
   }
 }
