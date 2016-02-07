@@ -6,9 +6,14 @@ machine:
 general:
   artifacts:
     - ./coverage
+dependencies:
+  pre:
+    - npm install -g forver
 test:
+  pre: forever start index.js
   override:
     - npm run test
     - npm run test:e2e -- --env phantomjs
   post:
     - npm run test:coverage
+    - forever stop 0
