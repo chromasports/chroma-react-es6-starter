@@ -1,6 +1,6 @@
 {
   "watch": [
-    "webpack.config.js"
+    "*"
   ],
   "ext": "js json jade",
   "env": {

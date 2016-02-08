@@ -20,6 +20,7 @@ Just so you are aware, all of this is an experiment!
 * nightwatch
 * selenium
 * isparta (istanbul)
+* circleCI config
 
 ## Setup
 
@@ -40,6 +41,8 @@ npm run dev
 ```
 
 ### Testing
+
+*Note: You must be serving the app in a seperate terminal for all tests to pass*
 
 #### Unit Testing
 
