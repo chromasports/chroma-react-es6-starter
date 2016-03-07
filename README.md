@@ -9,6 +9,9 @@ The aim of this project is to showcase the use of react, webpack, babel and esne
 
 Just so you are aware, all of this is an experiment!
 
+TODO: Fix server side rendering... currently server is simply used as an api...
+TODO: Serve frontend from express (use webpack isomorphic tools)
+
 ## What you get
 
 * babel 6
