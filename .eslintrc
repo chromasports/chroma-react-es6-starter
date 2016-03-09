@@ -16,6 +16,7 @@
   "globals": {
     "describe": true,
     "expect": true,
-    "it": true
+    "it": true,
+    "__DEV__": true
   }
 }

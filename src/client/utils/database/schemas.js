@@ -16,6 +16,8 @@ export default function(db) {
   // in future this should not be done here unless
   // setting up some app specific stuff which you require
   // before react is instantiated
+  // as you can probably tell by the method name, put updates
+  // and creates if no record was found.
   db.app.put({type: 'name', value: 'REACT ES6 STARTER KIT...'});
 
   // return the db

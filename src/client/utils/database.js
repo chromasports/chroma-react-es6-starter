@@ -47,4 +47,4 @@ export default db;
 // }
 //
 // // export the database for use within the app
-// export let DB = db;
+// export const DB = db;
