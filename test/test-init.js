@@ -13,6 +13,7 @@ global.sinon = sinon;
 // shim dom and various expected objects and functions
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
+global.self = window;
 global.navigator = {userAgent: 'Chrome'};
 global.console.debug = function() {}
 
