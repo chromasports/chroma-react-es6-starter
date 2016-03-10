@@ -1,8 +1,6 @@
 import React from 'react';
 
 import './header.css';
-// import child components
-import Navigation from './navigation';
 
 /**
  * Header Component
@@ -19,7 +17,7 @@ const Header = () => {
 
   return (
     <header>
-      <h1 className={`text-center`}>Chroma React ESNext Toolkit</h1>
+      Logo
       {/*<Navigation items={items} />*/}
     </header>
   );
