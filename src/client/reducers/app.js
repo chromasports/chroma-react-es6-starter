@@ -6,22 +6,19 @@ const getInitialState = () => {
   let state = {};
 
   DB.app.get('name').then(() => {
-
+    // do something to add it to the state?
   });
 
   return {
     ...state,
-    loading: false
+    loading: false,
   };
 }
 
 export const initialState = getInitialState();
 
 // reducer function
-export default function(state = initialState, action) {
-  // destructure action object and extract type
-  const { type } = action;
-
+export default function(state = initialState, { type, value }) {
   // switch based on the action.type
   switch (type) {
     case APP_LOADING:

@@ -1,11 +1,11 @@
 import { applyMiddleware, createStore, compose } from 'redux';
 import { persistState } from 'redux-devtools';
-import sagaMiddleware from 'redux-saga'
+// import sagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import DevTools from './containers/dev-tools';
 
-import sagas from './sagas';
+// import sagas from './sagas';
 
 const getDebugSessionKey = () => {
   const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
@@ -15,13 +15,13 @@ const getDebugSessionKey = () => {
 const enhancer = (!__DEV__) ?
   compose(
     applyMiddleware(
-      sagaMiddleware(...sagas),
+      // sagaMiddleware(...sagas),
       thunk
     ),
   ) :
   compose(
     applyMiddleware(
-      sagaMiddleware(...sagas),
+      // sagaMiddleware(...sagas),
       thunk
     ),
     // Required! Enable Redux DevTools with the monitors you chose
